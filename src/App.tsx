@@ -1,21 +1,19 @@
-import React from 'react';
+import { useState } from 'react';
 import './App.scss';
+import { Container } from './components/Container';
+import { Header } from './components/Header';
+import { SearchInput } from './components/SearchInput/SearchInput';
+import { WordInfo } from './components/WordInfo';
+import { Word } from './types/Word';
 
-interface Props {
-  onClick: () => void;
-  children: React.ReactNode;
-}
+export const App = () => {
+  const [word, setWord] = useState<Word | null>(null);
 
-export const Provider: React.FC<Props> = React.memo(({ onClick, children }) => (
-  <button type="button" onClick={onClick}>
-    {children}
-  </button>
-));
-
-export const App: React.FC = () => {
   return (
-    <div className="starter">
-      <Provider onClick={() => ({})}>TodoList</Provider>
-    </div>
+    <Container>
+      <Header />
+      <SearchInput setWord={setWord} />
+      <WordInfo word={word} />
+    </Container>
   );
 };

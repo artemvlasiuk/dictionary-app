@@ -1,0 +1,68 @@
+@import '../../App.scss';
+
+.word {
+  margin-top: 24px;
+
+  &__main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &-word {
+      color: #2d2d2d;
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    &-phonetic {
+      color: #a445ed;
+      font-feature-settings:
+        'clig' off,
+        'liga' off;
+
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+
+    &-audio {
+      width: 48px;
+      height: 48px;
+      background-image: url('../../../public/assets/images/icon-play.svg');
+      background-position: center;
+      background-size: contain;
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    flex: 1;
+    background-color: #e9e9e9;
+    margin: 24px 0;
+  }
+
+  &__source {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #757575;
+    font-feature-settings:
+      'clig' off,
+      'liga' off;
+
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration-line: underline;
+
+    a {
+      color: #2d2d2d;
+      cursor: pointer;
+    }
+  }
+}

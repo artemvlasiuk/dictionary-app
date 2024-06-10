@@ -1,0 +1,43 @@
+@import '../../App.scss';
+
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.switch {
+  input {
+    display: none;
+
+    &:checked + .switch__button {
+      background-color: #A445ED;
+
+      &::before {
+        transform: translateX(20px);
+      }
+    }
+  }
+
+  &__button {
+    display: inline-block;
+    background-color: rgb(159, 159, 159);
+    width: 40px;
+    height: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.3s;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      background-color: #fff;
+      border-radius: 50%;
+      margin: 3px;
+      transition: 0.3s;
+    }
+  }
+}
