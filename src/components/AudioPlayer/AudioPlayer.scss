@@ -1,1 +1,13 @@
 @import '../../App.scss';
+
+.audio {
+  width: 48px;
+  height: 48px;
+  background-image: url('../../../public/assets/images/icon-play.svg');
+  background-position: center;
+  background-size: contain;
+
+  &:active {
+    background-image: url('../../../public/assets/images/icon-play-active.svg');
+  }
+}

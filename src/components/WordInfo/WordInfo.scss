@@ -15,7 +15,8 @@
     }
 
     &-word {
-      color: #2d2d2d;
+      color: var(--main-text-color);
+      font-family: var(--font-fam);
       font-size: 32px;
       font-weight: 700;
     }
@@ -26,17 +27,10 @@
         'clig' off,
         'liga' off;
 
+      font-family: var(--font-fam);
       font-size: 18px;
       font-weight: 400;
       line-height: 24px;
-    }
-
-    &-audio {
-      width: 48px;
-      height: 48px;
-      background-image: url('../../../public/assets/images/icon-play.svg');
-      background-position: center;
-      background-size: contain;
     }
   }
 
@@ -55,13 +49,13 @@
     font-feature-settings:
       'clig' off,
       'liga' off;
-
+    font-family: var(--font-fam);
     font-size: 14px;
     font-weight: 400;
     text-decoration-line: underline;
 
     a {
-      color: #2d2d2d;
+      color: var(--main-text-color);
       cursor: pointer;
     }
   }

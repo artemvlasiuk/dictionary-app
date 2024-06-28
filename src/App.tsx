@@ -13,7 +13,7 @@ export const App = () => {
     <Container>
       <Header />
       <SearchInput setWord={setWord} />
-      <WordInfo word={word} />
+      {word && <WordInfo word={word} setWord={setWord} />}
     </Container>
   );
 };

@@ -9,14 +9,15 @@
   padding: 14px 24px;
   flex-shrink: 0;
   border-radius: 16px;
-  background-color: #f4f4f4;
+  background-color: var(--input-bg-color);
 
   input {
     flex: 1;
     border: none;
     outline: none;
     background: none;
-    color: #2d2d2d;
+    color: var(--main-text-color);
+    font-family: var(--font-fam);
     font-size: 16px;
     font-weight: 700;
   }
@@ -27,5 +28,17 @@
     background-image: url('../../../public/assets/images/icon-search.svg');
     background-position: center;
     background-size: contain;
+    cursor: pointer;
+  }
+
+  &__error {
+    margin-top: 8px;
+    color: #ff5252;
+    font-feature-settings:
+      'clig' off,
+      'liga' off;
+    font-family: var(--font-fam);
+    font-size: 20px;
+    font-weight: 400;
   }
 }

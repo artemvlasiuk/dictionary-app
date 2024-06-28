@@ -14,7 +14,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ audio }) => {
   };
 
   return (
-    <button className="word__main-audio" onClick={handlePlay}>
+    <button className="audio" onClick={handlePlay}>
       <audio src={audio} ref={audioRef}></audio>
     </button>
   );

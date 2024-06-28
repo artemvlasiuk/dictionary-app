@@ -1,10 +1,12 @@
 @import '../../App.scss';
 
 .select {
+  position: relative;
 
   &__button {
-    color: #2d2d2d;
+    color: var(--main-text-color);
     text-align: right;
+    font-family: var(--font-fam);
     font-size: 14px;
     font-weight: 700;
     line-height: 24px;
@@ -12,6 +14,10 @@
     display: flex;
     align-items: center;
     gap: 16px;
+
+    @include on-tablet {
+      font-size: 18px;
+    }
   }
 
   &__icon {
@@ -20,5 +26,33 @@
     background-image: url('../../../public/assets/images/icon-arrow-down.svg');
     background-position: center;
     background-size: contain;
+  }
+
+  &__list {
+    position: absolute;
+    top: 42px;
+    right: 0;
+    width: 183px;
+    height: 152px;
+    border-radius: 16px;
+    background: var(--background-color);
+    box-shadow: var(--shadow-color);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item {
+    color: var(--main-text-color);
+    font-family: var(--font-fam);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    cursor: pointer;
+
+    &:hover {
+      color: #a445ed;
+    }
   }
 }

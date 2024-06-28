@@ -9,29 +9,39 @@ interface SearchInputProps {
 
 export const SearchInput: React.FC<SearchInputProps> = ({ setWord }) => {
   const [query, setQuery] = useState('');
+  const [error, setError] = useState(false);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const trimmedQuery = query.trim();
 
+    if (!trimmedQuery) {
+      setError(true);
+    }
+
     if (trimmedQuery) {
       setQuery(trimmedQuery);
 
       fetchWord(trimmedQuery).then(setWord);
+
+      setError(false);
     }
   };
 
   return (
-    <form className="search" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="search"
-        placeholder="Search for any word…"
-        value={query}
-        onChange={e => setQuery(e.target.value)}
-      />
-      <div className="search__icon"></div>
-    </form>
+    <>
+      <form className="search" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="search"
+          placeholder="Search for any word…"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+        />
+        <div className="search__icon"></div>
+      </form>
+      {error && <div className="search__error">Whoops, can’t be empty…</div>}
+    </>
   );
 };
