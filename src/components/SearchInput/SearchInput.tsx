@@ -46,6 +46,14 @@ export const SearchInput: React.FC = () => {
     }
   };
 
+  const handleInputChange = (event: FormEvent<HTMLInputElement>) => {
+    setQuery(event.currentTarget.value);
+
+    if (error) {
+      setError(false);
+    }
+  };
+
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
@@ -64,7 +72,7 @@ export const SearchInput: React.FC = () => {
           placeholder="Search for any word…"
           ref={inputRef}
           value={query}
-          onChange={e => setQuery(e.target.value)}
+          onChange={handleInputChange}
         />
         <button type="submit" className="search__icon"></button>
       </form>
