@@ -1,19 +1,20 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import './App.scss';
 import { Container } from './components/Container';
 import { Header } from './components/Header';
 import { SearchInput } from './components/SearchInput/SearchInput';
 import { WordInfo } from './components/WordInfo';
-import { Word } from './types/Word';
+import { WordContext } from './components/context/WordContext';
 
 export const App = () => {
-  const [word, setWord] = useState<Word | null>(null);
+  const context = useContext(WordContext);
+  const word = context ? context.word : null;
 
   return (
     <Container>
       <Header />
-      <SearchInput setWord={setWord} />
-      {word && <WordInfo word={word} setWord={setWord} />}
+      <SearchInput />
+      {word && <WordInfo />}
     </Container>
   );
 };

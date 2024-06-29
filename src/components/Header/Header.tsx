@@ -1,11 +1,16 @@
+import { useContext } from 'react';
 import { SelectMenu } from '../SelectMenu';
 import { ThemeSwitcher } from '../ThemeSwitcher';
+import { WordContext } from '../context/WordContext';
 import './Header.scss';
 
-export const Header = () => {
+export const Header: React.FC = () => {
+  const context = useContext(WordContext);
+  const setWord = context ? context.setWord : () => {};
+
   return (
     <header className="header">
-      <a className="header__logo">
+      <a className="header__logo" href="#" onClick={() => setWord(null)}>
         <img
           src="assets/images/logo.svg"
           alt="Logo"

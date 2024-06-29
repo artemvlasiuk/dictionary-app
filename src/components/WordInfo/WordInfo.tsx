@@ -1,14 +1,12 @@
 import './WordInfo.scss';
-import { Word } from '../../types/Word';
 import { AudioPlayer } from '../AudioPlayer';
 import { WordMeaning } from '../WordMeaning';
+import { useContext } from 'react';
+import { WordContext } from '../context/WordContext';
 
-interface WordInfoProps {
-  word: Word | null;
-  setWord: (word: Word | null) => void;
-}
-
-export const WordInfo: React.FC<WordInfoProps> = ({ word, setWord }) => {
+export const WordInfo: React.FC = () => {
+  const context = useContext(WordContext);
+  const word = context ? context.word : null;
   const wordToShow = word?.[0];
   const audioObject = wordToShow?.phonetics.find(
     phonetic => phonetic.audio !== '',
@@ -25,11 +23,7 @@ export const WordInfo: React.FC<WordInfoProps> = ({ word, setWord }) => {
       </div>
 
       {wordToShow?.meanings.map(meaning => (
-        <WordMeaning
-          key={meaning.partOfSpeech}
-          meaning={meaning}
-          setWord={setWord}
-        />
+        <WordMeaning key={meaning.partOfSpeech} meaning={meaning} />
       ))}
       <div className="word__divider"></div>
       <div className="word__source">

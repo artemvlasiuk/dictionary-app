@@ -1,16 +1,17 @@
+import { useContext } from 'react';
 import { fetchWord } from '../../app/api';
-import { Meaning, Word } from '../../types/Word';
+import { Meaning } from '../../types/Word';
 import './WordMeaning.scss';
+import { WordContext } from '../context/WordContext';
 
 interface WordMeaningProps {
   meaning: Meaning;
-  setWord: (word: Word | null) => void;
 }
 
-export const WordMeaning: React.FC<WordMeaningProps> = ({
-  meaning,
-  setWord,
-}) => {
+export const WordMeaning: React.FC<WordMeaningProps> = ({ meaning }) => {
+  const context = useContext(WordContext);
+  const setWord = context ? context.setWord : () => {};
+
   const onSynonymClick = (synonym: string) => {
     fetchWord(synonym).then(setWord);
   };

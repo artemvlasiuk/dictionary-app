@@ -1,15 +1,17 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useContext, useEffect, useRef, useState } from 'react';
 import './SearchInput.scss';
 import { fetchWord } from '../../app/api';
-import { Word } from '../../types/Word';
+import cn from 'classnames';
+import { WordContext } from '../context/WordContext';
 
-interface SearchInputProps {
-  setWord: (word: Word | null) => void;
-}
-
-export const SearchInput: React.FC<SearchInputProps> = ({ setWord }) => {
+export const SearchInput: React.FC = () => {
   const [query, setQuery] = useState('');
   const [error, setError] = useState(false);
+
+  const context = useContext(WordContext);
+  const setWord = context ? context.setWord : () => {};
+
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -18,9 +20,9 @@ export const SearchInput: React.FC<SearchInputProps> = ({ setWord }) => {
 
     if (!trimmedQuery) {
       setError(true);
-    }
 
-    if (trimmedQuery) {
+      return;
+    } else {
       setQuery(trimmedQuery);
 
       fetchWord(trimmedQuery).then(setWord);
@@ -29,13 +31,23 @@ export const SearchInput: React.FC<SearchInputProps> = ({ setWord }) => {
     }
   };
 
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [inputRef]);
+
   return (
     <>
-      <form className="search" onSubmit={handleSubmit}>
+      <form
+        className={cn('search', { 'search--error': error })}
+        onSubmit={handleSubmit}
+      >
         <input
           type="text"
           name="search"
           placeholder="Search for any word…"
+          ref={inputRef}
           value={query}
           onChange={e => setQuery(e.target.value)}
         />

@@ -11,6 +11,14 @@
   border-radius: 16px;
   background-color: var(--input-bg-color);
 
+  &--error {
+    border: 1px solid #ff5252;
+  }
+
+  &:focus-within {
+    border: 1px solid #a445ed;
+  }
+
   input {
     flex: 1;
     border: none;
