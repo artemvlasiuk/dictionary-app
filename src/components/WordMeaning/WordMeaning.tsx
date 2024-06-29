@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { fetchWord } from '../../app/api';
 import { Meaning } from '../../types/Word';
 import './WordMeaning.scss';
-import { WordContext } from '../context/WordContext';
+import { WordContext } from '../../context/WordContext';
 
 interface WordMeaningProps {
   meaning: Meaning;

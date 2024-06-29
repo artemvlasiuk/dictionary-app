@@ -2,7 +2,7 @@ import { FormEvent, useContext, useEffect, useRef, useState } from 'react';
 import './SearchInput.scss';
 import { fetchWord } from '../../app/api';
 import cn from 'classnames';
-import { WordContext } from '../context/WordContext';
+import { WordContext } from '../../context/WordContext';
 
 export const SearchInput: React.FC = () => {
   const [query, setQuery] = useState('');
@@ -10,6 +10,10 @@ export const SearchInput: React.FC = () => {
 
   const context = useContext(WordContext);
   const setWord = context ? context.setWord : () => {};
+
+  const setWordNotFound = context ? context.setWordNotFound : () => {};
+
+  const setLoading = context ? context.setLoading : () => {};
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -25,7 +29,18 @@ export const SearchInput: React.FC = () => {
     } else {
       setQuery(trimmedQuery);
 
-      fetchWord(trimmedQuery).then(setWord);
+      fetchWord(trimmedQuery)
+        .then(data => {
+          setLoading(true);
+
+          if (data.length > 0) {
+            setWord(data);
+          } else {
+            setWord(null);
+            setWordNotFound(true);
+          }
+        })
+        .finally(() => setLoading(false));
 
       setError(false);
     }
@@ -51,7 +66,7 @@ export const SearchInput: React.FC = () => {
           value={query}
           onChange={e => setQuery(e.target.value)}
         />
-        <div className="search__icon"></div>
+        <button type="submit" className="search__icon"></button>
       </form>
       {error && <div className="search__error">Whoops, can’t be empty…</div>}
     </>

@@ -1,6 +1,6 @@
 import './index.scss';
 import { createRoot } from 'react-dom/client';
-import { WordProvider } from './components/context/WordContext';
+import { WordProvider } from './context/WordContext';
 
 import { App } from './App';
 

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { SelectMenu } from '../SelectMenu';
 import { ThemeSwitcher } from '../ThemeSwitcher';
-import { WordContext } from '../context/WordContext';
+import { WordContext } from '../../context/WordContext';
 import './Header.scss';
 
 export const Header: React.FC = () => {

@@ -2,7 +2,7 @@ import './WordInfo.scss';
 import { AudioPlayer } from '../AudioPlayer';
 import { WordMeaning } from '../WordMeaning';
 import { useContext } from 'react';
-import { WordContext } from '../context/WordContext';
+import { WordContext } from '../../context/WordContext';
 
 export const WordInfo: React.FC = () => {
   const context = useContext(WordContext);
