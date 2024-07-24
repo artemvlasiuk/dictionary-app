@@ -9,8 +9,7 @@ interface WordMeaningProps {
 }
 
 export const WordMeaning: React.FC<WordMeaningProps> = ({ meaning }) => {
-  const context = useContext(WordContext);
-  const setWord = context ? context.setWord : () => {};
+  const { setWord } = useContext(WordContext);
 
   const onSynonymClick = (synonym: string) => {
     fetchWord(synonym).then(setWord);

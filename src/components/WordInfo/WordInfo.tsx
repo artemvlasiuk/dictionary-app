@@ -5,8 +5,7 @@ import { useContext } from 'react';
 import { WordContext } from '../../context/WordContext';
 
 export const WordInfo: React.FC = () => {
-  const context = useContext(WordContext);
-  const word = context ? context.word : null;
+  const { word } = useContext(WordContext);
   const wordToShow = word?.[0];
   const audioObject = wordToShow?.phonetics.find(
     phonetic => phonetic.audio !== '',

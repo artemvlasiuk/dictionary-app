@@ -5,10 +5,7 @@ import { WordContext } from '../../context/WordContext';
 import './Header.scss';
 
 export const Header: React.FC = () => {
-  const context = useContext(WordContext);
-  const setWord = context ? context.setWord : () => {};
-
-  const setWordNotFound = context ? context.setWordNotFound : () => {};
+  const { setWord, setWordNotFound } = useContext(WordContext);
 
   const onLogoClick = () => {
     setWord(null);

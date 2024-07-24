@@ -8,12 +8,13 @@ export const SearchInput: React.FC = () => {
   const [query, setQuery] = useState('');
   const [error, setError] = useState(false);
 
-  const context = useContext(WordContext);
-  const setWord = context ? context.setWord : () => {};
+  const { setWord, setWordNotFound, setLoading } = useContext(WordContext);
+
+  /* const setWord = context ? context.setWord : () => {};
 
   const setWordNotFound = context ? context.setWordNotFound : () => {};
 
-  const setLoading = context ? context.setLoading : () => {};
+  const setLoading = context ? context.setLoading : () => {}; */
 
   const inputRef = useRef<HTMLInputElement>(null);
 

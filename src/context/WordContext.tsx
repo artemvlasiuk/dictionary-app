@@ -10,12 +10,21 @@ interface WordContextType {
   setLoading: Dispatch<SetStateAction<boolean>>;
 }
 
-export const WordContext = createContext<WordContextType | null>(null);
+const initialValue: WordContextType = {
+  word: null,
+  setWord: () => {},
+  wordNotFound: false,
+  setWordNotFound: () => {},
+  loading: false,
+  setLoading: () => {},
+};
+
+export const WordContext = createContext<WordContextType>(initialValue);
 
 export const WordProvider = ({ children }: { children: React.ReactNode }) => {
   const [word, setWord] = useState<Word | null>(null);
-  const [wordNotFound, setWordNotFound] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [wordNotFound, setWordNotFound] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   return (
     <WordContext.Provider

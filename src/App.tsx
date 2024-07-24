@@ -9,11 +9,7 @@ import { NotFound } from './components/NotFound';
 import { Loader } from './components/Loader';
 
 export const App = () => {
-  const context = useContext(WordContext);
-  const word = context ? context.word : null;
-  const wordNotFound = context ? context.wordNotFound : () => {};
-
-  const loading = context ? context.loading : false;
+  const { word, wordNotFound, loading } = useContext(WordContext);
 
   return (
     <Container>
